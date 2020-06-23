@@ -1,0 +1,35 @@
+
+GET http://localhost:3000/api/v1/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmFybmV0dCIsImVtYWlsIjoiYmFybmV0dGJsYW5rZW5zaGlwQHF1b3RlemFydC5jb20iLCJpYXQiOjE1OTI5MDQ1NDMsImV4cCI6MTU5Mjk5MDk0M30.ZNUpQc2ir1clPUaKSpqmy9TAPAco8GEYnZPAkytn_lM
+
+###
+
+GET http://localhost:3000/api/v1/users/e8fd159b-57c4-4d36-9bd7-a59ca13057bb
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmFybmV0dCIsImVtYWlsIjoiYmFybmV0dGJsYW5rZW5zaGlwQHF1b3RlemFydC5jb20iLCJyb2xlIjoidXNlciIsImlkIjoiYTNiOGQ0MjUtMmI2MC00YWQ3LWJlY2MtYmVkZjJlZjg2MGJkIiwiaWF0IjoxNTkyOTMxODQwLCJleHAiOjE1OTMwMTgyNDB9.wkwAkvM7aHMyfFsOBqbzH4EEZRO1vZkhIsD2NB3JfOM
+
+###
+DELETE http://localhost:4000/logout
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGl0byIsImlhdCI6MTU4OTgyNjgyNH0.Z0jesx96zELxXnMbj60iGWX60o-k5nO3NX3OyV0D4eI"
+}
+
+###
+POST http://localhost:4000/token
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGl0byIsImlhdCI6MTU4OTgyNjgyNH0.Z0jesx96zELxXnMbj60iGWX60o-k5nO3NX3OyV0D4eI"
+}
+
+###
+
+POST http://localhost:4000/login
+Content-Type: application/json
+
+{
+    "username": "Barnett",
+    "email":"barnettblankenship@quotezart.com"
+}
+
