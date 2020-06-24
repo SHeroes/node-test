@@ -12,7 +12,7 @@ DELETE http://localhost:3000/api/v1/logout
 Content-Type: application/json
 
 {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmFybmV0dCIsImVtYWlsIjoiYmFybmV0dGJsYW5rZW5zaGlwQHF1b3RlemFydC5jb20iLCJyb2xlIjoidXNlciIsImlkIjoiYTNiOGQ0MjUtMmI2MC00YWQ3LWJlY2MtYmVkZjJlZjg2MGJkIiwiaWF0IjoxNTkzMDM2NTA1fQ.GMrhLLx0L5bNTiBlpE41XvjLec_V01rm2VkhSX9gP4w"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmFybmV0dCIsImVtYWlsIjoiYmFybmV0dGJsYW5rZW5zaGlwQHF1b3RlemFydC5jb20iLCJyb2xlIjoidXNlciIsImlkIjoiYTNiOGQ0MjUtMmI2MC00YWQ3LWJlY2MtYmVkZjJlZjg2MGJkIiwiaWF0IjoxNTkzMDM2NjM3fQ.9GnTx12UMRjc5bXsTmTgdfHa2qkrQG-30NVuoAYBBy8"
 }
 
 ###

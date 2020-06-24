@@ -2,8 +2,8 @@ require('dotenv').config()
 const createError   = require('http-errors');
 const express       = require('express');
 const app           = express();
-const http            = require('http');
-
+const http          = require('http');
+const cors          = require('cors')
 const path          = require('path');
 const cookieParser  = require('cookie-parser');
 const logger        = require('morgan');
@@ -21,6 +21,7 @@ const errorRoute    = require('./routes/error/error');
 
 
 
+app.use(cors({origin: '*', optionsSuccessStatus: 200 }));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

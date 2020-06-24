@@ -3,8 +3,7 @@ const router = express.Router();
 
 
 router.get('/', function(req, res) {
-    //res.render('index', { title: '' }   );
-    res.send('HOME PAGE')
+    res.send('HOME PAGE - USELESS THIS IS AN API ')
 })
 
 
