@@ -1,7 +1,8 @@
+require('dotenv').config()
 const createError   = require('http-errors');
 const express       = require('express');
 const app           = express();
-var http            = require('http');
+const http            = require('http');
 
 const path          = require('path');
 const cookieParser  = require('cookie-parser');
@@ -11,8 +12,12 @@ const logger        = require('morgan');
 const indexRouter   = require('./routes/index');
 const usersRoute    = require('./routes/api/users');
 const policiesRoute = require('./routes/api/policies');
+const loginRoute    = require('./routes/api/login');
+const logoutRoute   = require('./routes/api/logout');
+const refreshToken  = require('./routes/api/refreshToken');
 const homeRoute     = require('./routes/home/home');
 const errorRoute    = require('./routes/error/error');
+
 
 
 
@@ -23,11 +28,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use('/',                indexRouter);
-app.use('/api/v1/users',    usersRoute);
-app.use('/api/v1/policies', policiesRoute);
-app.use('/home',            homeRoute);
-app.use('/error',           errorRoute);
+app.use('/',                    indexRouter);
+app.use('/api/v1/users',        usersRoute);
+app.use('/api/v1/policies',     policiesRoute);
+app.use('/api/v1/login',        loginRoute);
+app.use('/api/v1/refreshToken', refreshToken);
+app.use('/api/v1/logout',       logoutRoute);
+app.use('/home',                homeRoute);
+app.use('/error',               errorRoute);
 
 
 // catch 404 and forward to error handler
