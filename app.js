@@ -1,26 +1,20 @@
-const createError = require('http-errors');
-const express = require('express');
-const app = express();
+const createError   = require('http-errors');
+const express       = require('express');
+const app           = express();
+var http            = require('http');
 
-
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-
-
+const path          = require('path');
+const cookieParser  = require('cookie-parser');
+const logger        = require('morgan');
 
 // routes
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const indexRouter   = require('./routes/index');
+const usersRoute    = require('./routes/api/users');
+const policiesRoute = require('./routes/api/policies');
+const homeRoute     = require('./routes/home/home');
+const errorRoute    = require('./routes/error/error');
 
 
-
-
-
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -28,8 +22,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/api/v1/users', usersRouter);
+
+app.use('/',                indexRouter);
+app.use('/api/v1/users',    usersRoute);
+app.use('/api/v1/policies', policiesRoute);
+app.use('/home',            homeRoute);
+app.use('/error',           errorRoute);
 
 
 // catch 404 and forward to error handler
@@ -45,9 +43,11 @@ app.use(function(err, req, res, next) {
 
     // render the error page
     res.status(err.status || 500);
-    res.render('error');
+    
+    //res.render('error');
+    res.send('error');
 });
 
 module.exports = app;
 
-app.listen(3000)
+http.createServer(app).listen(3000)

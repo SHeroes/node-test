@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-/* GET home page. */
+
 router.get('/', function(req, res) {
-    //res.render('index', { title: 'Express' });
-    res.send('Index PAGE');
-    // res.redirect('/home')
-});
+    //res.render('index', { title: '' }   );
+    res.send('HOME PAGE')
+})
+
 
 
 module.exports = router;
