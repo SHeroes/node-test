@@ -1,42 +1,13 @@
-require('dotenv').config()
-const jwt = require('jsonwebtoken')
-const request = require('request')
+const rp = require('request-promise')
 
-
-function authenticateToken (req, res, next) {
-    const authHeader = req.headers['authorization']
-    const token = authHeader && authHeader.split(' ')[1]
-    if (token == null) return res.sendStatus(401)
-
-    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-        if (err) return res.sendStatus(403)
-        req.user = user
-        next()
+// make a API REQUEST and aply _functionSelector as filter to select result
+function apiRequest(req,res,_functionSelector,uri){
+    rp({uri:uri,json:true}).then(function(response){
+        _functionSelector(req,res,response);
+    }).catch(function(error){
+        console.log('error:', error);
+        res.sendStatus(406); // TODO review code errors in general
     })
 }
 
-function authorizationRole(role){
-    return (req,res,next) => {
-        if (req.user.role !== role) {
-            res.sendStatus(401);
-            return res.send('Not Allowed');
-        }
-    }
-    next();
-}
-
-function requestSimple(){
-    request(URL_USERS, {json:true}, function(error, res, req, name = 'Barnett') {
-        console.log('error:', error);
-        console.log('statusCode:', res && res.statusCode); 
-        if(res && res.statusCode==200){
-            let data=req;
-            console.log(data.clients.filter( user => user.name ===  name ));
-    
-        }
-    });
-}
-
-
-
-module.exports = { authenticateToken, authorizationRole, requestSimple}
+module.exports = { apiRequest }
