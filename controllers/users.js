@@ -1,14 +1,14 @@
-const {apiRequest} = require('../utils/commonFunctions')
+const common_f = require('../utils/commonFunctions')
 const { URL_USERS, CODE_NUM_FORBIDDEN } = require('../utils/constants');
 
 exports.getUserById = (req, res) => {
         if(req.params.id === undefined ) res.statusCode(CODE_NUM_FORBIDDEN);
-        apiRequest(req,res,userById,URL_USERS);
+        common_f.apiRequest(req,res,userById,URL_USERS);
     }
 
 exports.getUserByName = (req, res) => {
     if(req.params.name === undefined ) res.sendStatus(CODE_NUM_FORBIDDEN);
-    apiRequest(req,res,userByNames,URL_USERS);
+    common_f.apiRequest(req,res,userByNames,URL_USERS);
 }
 
 userByNames = (req,res,response) => {

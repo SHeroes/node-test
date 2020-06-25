@@ -4,13 +4,13 @@ const { authenticateToken, authorizationRole} = require('../../utils/authFunctio
 const userControllers   = require('../../controllers/users');
 
 
-router.get('/', function(req, res) {
+router.get('/', (req, res) => {
     res.send('users base path')
 })
 
 // this method are allowed to all role access 
-router.get('/id/:id', authenticateToken,        userControllers.getUserById);
-router.get('/name/:name', authenticateToken,    userControllers.getUserByName);
+router.get('/id/:id',       authenticateToken,      userControllers.getUserById);
+router.get('/name/:name',   authenticateToken,      userControllers.getUserByName);
 
 
 module.exports = router;

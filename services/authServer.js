@@ -18,7 +18,6 @@ exports.login = (req, res) => {
         id: ''
     }
     
-    // TODO HANDLER ERRORES LIKE THE REST
     let options = {
         uri: URL_ROLES,
         headers: {'User-Agent': 'Request-Promise' },

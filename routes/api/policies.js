@@ -3,7 +3,7 @@ const router = express.Router();
 const policiesControllers   = require('../../controllers/policies');
 const { authenticateToken, authorizationRole } = require('../../utils/authFunctions');
 
-router.get('/', function(req, res) {
+router.get('/', (req, res) => {
     res.send('policies base path')
 })
 

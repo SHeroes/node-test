@@ -50,7 +50,7 @@ POST http://localhost:3000/api/v1/refreshToken
 Content-Type: application/json
 
 {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmFybmV0dCIsImVtYWlsIjoiYmFybmV0dGJsYW5rZW5zaGlwQHF1b3RlemFydC5jb20iLCJyb2xlIjoidXNlciIsImlkIjoiYTNiOGQ0MjUtMmI2MC00YWQ3LWJlY2MtYmVkZjJlZjg2MGJkIiwiaWF0IjoxNTkzMDM2NTA1fQ.GMrhLLx0L5bNTiBlpE41XvjLec_V01rm2VkhSX9gP4w"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQnJpdG5leSIsImVtYWlsIjoiYnJpdG5leWJsYW5rZW5zaGlwQHF1b3RlemFydC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpZCI6ImEwZWNlNWRiLWNkMTQtNGYyMS04MTJmLTk2NjYzM2U3YmU4NiIsImlhdCI6MTU5MzA4OTg5OX0.cS_LjSLqOz7DcTZ5yxUKqZe0jc153Ecq-67b3PfV81M"
 }
 
 
