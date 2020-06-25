@@ -1,5 +1,15 @@
 
-GET http://localhost:3000/api/v1/users
+POST http://localhost:3000/api/v1/login
+Content-Type: application/json
+
+{
+    "username": "Barnett",
+    "email":"barnettblankenship@quotezart.com"
+}
+
+###
+
+GET http://localhost:3000/api/v1/users/name/Barnett
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmFybmV0dCIsImVtYWlsIjoiYmFybmV0dGJsYW5rZW5zaGlwQHF1b3RlemFydC5jb20iLCJyb2xlIjoidXNlciIsImlkIjoiYTNiOGQ0MjUtMmI2MC00YWQ3LWJlY2MtYmVkZjJlZjg2MGJkIiwiaWF0IjoxNTkzMDM2NTA1LCJleHAiOjE1OTMxMjI5MDV9.aHec9s6oh2bHyGBpwZxRaHio06fRDTeHOfEVUXFXApQ
 
 ###
@@ -23,13 +33,4 @@ Content-Type: application/json
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmFybmV0dCIsImVtYWlsIjoiYmFybmV0dGJsYW5rZW5zaGlwQHF1b3RlemFydC5jb20iLCJyb2xlIjoidXNlciIsImlkIjoiYTNiOGQ0MjUtMmI2MC00YWQ3LWJlY2MtYmVkZjJlZjg2MGJkIiwiaWF0IjoxNTkzMDM2NTA1fQ.GMrhLLx0L5bNTiBlpE41XvjLec_V01rm2VkhSX9gP4w"
 }
 
-###
-
-POST http://localhost:3000/api/v1/login
-Content-Type: application/json
-
-{
-    "username": "Barnett",
-    "email":"barnettblankenship@quotezart.com"
-}
 

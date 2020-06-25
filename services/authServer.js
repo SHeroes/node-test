@@ -16,7 +16,7 @@ exports.login = (req, res) => {
         role: '',
         id: ''
     }
-    
+    console.log(req.body);
     // TODO MANEJO DE ERRORES UNIFICAR CRITERIOS CON EL RESTO
     let options = {
         uri: URL_ROLES,
@@ -27,7 +27,9 @@ exports.login = (req, res) => {
     // TODO USE LOADASH for user object
     rp(options).then(function(response){
         let data=response;
-        userFiltered = data.clients.filter( us => us.name ===  username );
+        userFiltered = data.clients.filter( us => us.name ===  username && us.email ===  email);
+        if(!(userFiltered).length) return res.sendStatus(CODE_NUM_UNAUTHORIZED);
+        
         user.role =  userFiltered[0].role;
         user.id = userFiltered[0].id;      
         const accessToken = generateAccessToken(user)
