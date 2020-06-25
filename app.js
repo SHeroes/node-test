@@ -2,7 +2,6 @@ require('dotenv').config()
 const createError   = require('http-errors');
 const express       = require('express');
 const app           = express();
-const http          = require('http');
 const cors          = require('cors')
 const path          = require('path');
 const cookieParser  = require('cookie-parser');
@@ -17,7 +16,6 @@ const logoutRoute   = require('./routes/api/logout');
 const refreshToken  = require('./routes/api/refreshToken');
 const homeRoute     = require('./routes/home/home');
 const errorRoute    = require('./routes/error/error');
-
 
 
 
@@ -51,10 +49,9 @@ app.use(function(err, req, res, next) {
     res.locals.error = req.app.get('env') === 'development' ? err : {};
 
     res.status(err.status || 500);
-    
-    res.send('error');
+    res.send('Internal Error Server - General Section');
 });
 
 module.exports = app;
 
-http.createServer(app).listen(3000)
+

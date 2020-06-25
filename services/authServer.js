@@ -3,6 +3,7 @@ const { URL_ROLES, CODE_NUM_FORBIDDEN, CODE_NUM_UNAUTHORIZED,CODE_NUM_NOT_ACCEPT
 const jwt = require('jsonwebtoken')
 const rp = require('request-promise');
 
+
 let refreshTokens = [];
 
 exports.login = (req, res) => {
@@ -24,7 +25,7 @@ exports.login = (req, res) => {
         json: true
     }
 
-    rp(options).then(function(response){
+    rp(options).then((response)=>{
         let data=response;
         userFiltered = data.clients.filter( us => us.name ===  username && us.email ===  email).shift();
         if(!userFiltered) return res.sendStatus(CODE_NUM_UNAUTHORIZED);
@@ -36,11 +37,28 @@ exports.login = (req, res) => {
         refreshTokens.push(refreshToken)
         res.json({ accessToken: accessToken, refreshToken: refreshToken })
 
-    }).catch(function(error){
-        console.log('error:', error);
+    }).catch((error)=>{
+        console.log('error-login-section:', error);
         res.sendStatus(CODE_NUM_NOT_ACCEPTABLE);
     })
 
+}
+
+exports.saveSessionPolicies = (req,res, next) => {
+    
+    // beautiful place to use Loadash
+    let user = {    
+        name: req.user.name,
+        email: req.user.email,
+        role: req.user.role,
+        id: req.user.id,
+        policyIdLinked: req.params.id
+    }
+
+    const accessToken = generateAccessToken(user);
+    const refreshToken = jwt.sign(req.user, process.env.REFRESH_TOKEN_SECRET)
+    refreshTokens.push(refreshToken);
+    res.json({ accessToken: accessToken, refreshToken: refreshToken })
 }
 
 exports.refreshToken = (req, res) => {

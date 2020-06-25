@@ -1,6 +1,12 @@
 const {apiRequest} = require('../utils/commonFunctions')
 const { URL_USERS, CODE_NUM_FORBIDDEN, URL_POLICY } = require('../utils/constants');
+const { saveSessionPolicies } = require('../services/authServer');
+const { json } = require('express');
 
+exports.setPolicyInSession = (req,res) => {   
+    if (req.params.id === undefined) {    res.json({error:'id Policy Not received'});  return }
+    saveSessionPolicies(req,res);
+}
 
 exports.getPolicyByClientName = (req, res) => {
     if(req.params.name === undefined ) res.sendStatus(CODE_NUM_FORBIDDEN);
