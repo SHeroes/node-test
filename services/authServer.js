@@ -16,22 +16,21 @@ exports.login = (req, res) => {
         role: '',
         id: ''
     }
-    console.log(req.body);
-    // TODO MANEJO DE ERRORES UNIFICAR CRITERIOS CON EL RESTO
+    
+    // TODO HANDLER ERRORES LIKE THE REST
     let options = {
         uri: URL_ROLES,
         headers: {'User-Agent': 'Request-Promise' },
         json: true
     }
 
-    // TODO USE LOADASH for user object
     rp(options).then(function(response){
         let data=response;
-        userFiltered = data.clients.filter( us => us.name ===  username && us.email ===  email);
-        if(!(userFiltered).length) return res.sendStatus(CODE_NUM_UNAUTHORIZED);
+        userFiltered = data.clients.filter( us => us.name ===  username && us.email ===  email).shift();
+        if(!userFiltered) return res.sendStatus(CODE_NUM_UNAUTHORIZED);
         
-        user.role =  userFiltered[0].role;
-        user.id = userFiltered[0].id;      
+        user.role =  userFiltered.role;
+        user.id = userFiltered.id;      
         const accessToken = generateAccessToken(user)
         const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET)
         refreshTokens.push(refreshToken)
@@ -39,7 +38,6 @@ exports.login = (req, res) => {
 
     }).catch(function(error){
         console.log('error:', error);
-        // console.log('statusCode:', response && response.statusCode); 
         res.sendStatus(CODE_NUM_NOT_ACCEPTABLE);
     })
 
@@ -63,6 +61,6 @@ exports.logout = (req, res) => {
 }
 
 
-function generateAccessToken(user) {
+generateAccessToken = (user) => {
     return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: process.env.ACCESS_TOKEN_EXPIRES }) // standard could be 15m
 }

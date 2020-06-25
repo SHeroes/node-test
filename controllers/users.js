@@ -11,12 +11,12 @@ exports.getUserByName = (req, res) => {
     apiRequest(req,res,userByNames,URL_USERS);
 }
 
-function userByNames(req,res,response){
+userByNames = (req,res,response) => {
     let userFiltered = response.clients.filter( us => us.name === req.params.name );
     res.json(userFiltered);
 }
 
-function userById(req,res,response){
+userById = (req,res,response) => {
     let userFiltered = response.clients.filter( us => us.id === req.params.id );
     res.json(userFiltered);
 }
