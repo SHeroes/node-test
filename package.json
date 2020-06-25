@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "nodemon app.js",
-    "startAuth": "nodemon authServer.js"
+    "start": "nodemon app.js"
   },
   "keywords": [],
   "author": "",

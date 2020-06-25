@@ -3,9 +3,8 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-    //res.render('index', { title: 'Express' });
-    res.send('Index PAGE');
-    // res.redirect('/home')
+    res.json({ status: true, message: 'Index PAGE' })
+
 });
 
 
